@@ -6,7 +6,7 @@ import { BugListComponent } from './bugs/bug-list/bug-list.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
-
+            
         ])
     ],
     exports: [RouterModule]
