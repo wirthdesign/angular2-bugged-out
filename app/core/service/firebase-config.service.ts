@@ -1,16 +1,25 @@
 import { Injectable } from '@angular/core';
 
 import * as firebase from 'firebase';
+require('firebase/database');
 
 import { FIREBASE_CONFIG } from '../constant/constants';
 
 @Injectable()
-    export class FirebaseConfigService {
-        constructor() {
-            this.configureApp();
-        }
+export class FirebaseConfigService {
 
-        configureApp() {
-            firebase.initializeApp(FIREBASE_CONFIG);
-        }
+    private database: firebase.database.Database;
+
+    constructor() {
+        this.configureApp();
+        this.configureDatabase();
     }
+
+    configureApp() {
+        firebase.initializeApp(FIREBASE_CONFIG);
+    }
+
+    configureDatabase() {
+        this.database = firebase.database();
+    }
+}
