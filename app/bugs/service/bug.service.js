@@ -9,11 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
 var firebase_config_service_1 = require('../../core/service/firebase-config.service');
 var BugService = (function () {
     function BugService(fire) {
         this.fire = fire;
+        this.bugsDbRef = this.fire.database.ref('/bugs');
     }
+    BugService.prototype.getAddedBugs = function () {
+        var _this = this;
+        return Observable_1.Observable.create(function (obs) {
+            _this.bugsDbRef.on('child_added', function (bug) {
+                obs.next(bug.val());
+            }, function (err) {
+                obs.throw(err);
+            });
+        });
+    };
     BugService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [firebase_config_service_1.FirebaseConfigService])
