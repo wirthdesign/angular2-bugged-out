@@ -1,1 +1,4 @@
 /node_modules
+/app/core/constant/constants.js
+/app/core/constant/constants.js.map
+/app/core/constant/constants.ts
