@@ -15,7 +15,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
       'rxjs': 'npm:rxjs',
-      'angular-in-memoery-web-api': 'npm:angular-in-memoery-web-api'
+      'angular-in-memoery-web-api': 'npm:angular-in-memoery-web-api',
+      'firebase': 'npm:firebase'
     },
     packages: {
       app: {
@@ -27,6 +28,10 @@
       },
       'angular-in-memoery-web-api': {
         main: './index.js',
+        defaultExtension: 'js'
+      },
+      'firebase': {
+        main: './app.js',
         defaultExtension: 'js'
       }
     }
