@@ -8,6 +8,6 @@ export class Bug {
         public createdBy: string,
         public createdDate: number,
         public updatedBy?: string,
-        public UpdatedDate?: string 
+        public updatedDate?: string 
     ) { }
 }
