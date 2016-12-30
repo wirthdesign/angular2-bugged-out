@@ -9,21 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var firebase = require('firebase');
-var constants_1 = require('../core/constant/constants');
-var FirebaseConfigService = (function () {
-    function FirebaseConfigService() {
-        this.configureApp();
+var BugDetailComponent = (function () {
+    function BugDetailComponent() {
     }
-    FirebaseConfigService.prototype.configureApp = function () {
-        var app = firebase.initializeApp(constants_1.FIREBASE_CONFIG);
-        console.log(app);
-    };
-    FirebaseConfigService = __decorate([
-        core_1.Injectable(), 
+    BugDetailComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'bug-detail',
+            templateUrl: 'bug-detail.component.html',
+            styleUrls: ['bug-detail.component.css']
+        }), 
         __metadata('design:paramtypes', [])
-    ], FirebaseConfigService);
-    return FirebaseConfigService;
+    ], BugDetailComponent);
+    return BugDetailComponent;
 }());
-exports.FirebaseConfigService = FirebaseConfigService;
-//# sourceMappingURL=firebase-config.service.js.map
+exports.BugDetailComponent = BugDetailComponent;
+//# sourceMappingURL=bug-detail.component.js.map

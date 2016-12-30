@@ -13,13 +13,16 @@ var bug_service_1 = require('../service/bug.service');
 var BugListComponent = (function () {
     function BugListComponent(bugService) {
         this.bugService = bugService;
+        this.bugs = [];
     }
     BugListComponent.prototype.ngOnInit = function () {
         this.getAddedBugs();
     };
     BugListComponent.prototype.getAddedBugs = function () {
+        var _this = this;
         this.bugService.getAddedBugs()
             .subscribe(function (bug) {
+            _this.bugs.push(bug);
             console.log(bug);
         }, function (err) {
             console.log("Unable to get added bug - ", err);
