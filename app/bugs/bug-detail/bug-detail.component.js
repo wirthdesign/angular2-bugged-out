@@ -15,13 +15,13 @@ var BugDetailComponent = (function () {
         this.modalId = "bugModal";
     }
     BugDetailComponent.prototype.ngOnInit = function () {
-        this.configureform();
+        this.configureForm();
     };
-    BugDetailComponent.prototype.configureform = function () {
+    BugDetailComponent.prototype.configureForm = function () {
         this.bugForm = new forms_1.FormGroup({
             title: new forms_1.FormControl(),
-            status: new forms_1.FormControl(),
-            severity: new forms_1.FormControl(),
+            status: new forms_1.FormControl(1),
+            severity: new forms_1.FormControl(1),
             description: new forms_1.FormControl()
         });
     };

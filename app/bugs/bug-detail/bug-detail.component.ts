@@ -13,14 +13,14 @@ export class BugDetailComponent implements OnInit {
     private bugForm: FormGroup;
 
     ngOnInit() {
-        this.configureform();
+        this.configureForm();
     }
 
-    configureform() {
+    configureForm() {
         this.bugForm = new FormGroup({
             title: new FormControl(),
-            status: new FormControl(),
-            severity: new FormControl(),
+            status: new FormControl(1),
+            severity: new FormControl(1),
             description: new FormControl()
         });
     }
