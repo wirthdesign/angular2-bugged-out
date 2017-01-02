@@ -15,7 +15,7 @@ import { Bug } from '../model/bug';
 export class BugDetailComponent implements OnInit {
     private modalId = "bugModal";
     private bugForm: FormGroup;
-    @Input() currentBug = new Bug(null, null, null, null, null, null, null, null, null);
+    @Input() currentBug = new Bug(null, null, 1, 1, null, null, null, null, null);
 
     constructor(private formB: FormBuilder, private bugService: BugService) {
 
@@ -25,18 +25,21 @@ export class BugDetailComponent implements OnInit {
         this.configureForm();
     }
 
-    configureForm() {
+    configureForm(bug?: Bug) {
         // this.bugForm = new FormGroup({
         //     title: new FormControl(null, Validators.required),
         //     status: new FormControl(1, Validators.required),
         //     severity: new FormControl(1, Validators.required),
         //     description: new FormControl(null, Validators.required)
         // });
+        if (bug) {
+            this.currentBug = bug;
+        }
         this.bugForm = this.formB.group({
-            title: [null, Validators.required],
-            status: [1, Validators.required],
-            severity: [1, Validators.required],
-            description: [null, Validators.required]
+            title: [this.currentBug.title, Validators.required],
+            status: [this.currentBug.status, Validators.required],
+            severity: [this.currentBug.severity, Validators.required],
+            description: [this.currentBug.description, Validators.required]
         });
     }
 
@@ -56,5 +59,10 @@ export class BugDetailComponent implements OnInit {
 
     freshForm() {
         this.bugForm.reset({ status: 1, severity: 1 });
+        this.cleanBug();
+    }
+
+    cleanBug() {
+        this.currentBug = new Bug(null, null, 1, 1, null, null, null, null, null);
     }
 }

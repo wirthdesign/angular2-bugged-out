@@ -17,23 +17,26 @@ var BugDetailComponent = (function () {
         this.formB = formB;
         this.bugService = bugService;
         this.modalId = "bugModal";
-        this.currentBug = new bug_1.Bug(null, null, null, null, null, null, null, null, null);
+        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
     }
     BugDetailComponent.prototype.ngOnInit = function () {
         this.configureForm();
     };
-    BugDetailComponent.prototype.configureForm = function () {
+    BugDetailComponent.prototype.configureForm = function (bug) {
         // this.bugForm = new FormGroup({
         //     title: new FormControl(null, Validators.required),
         //     status: new FormControl(1, Validators.required),
         //     severity: new FormControl(1, Validators.required),
         //     description: new FormControl(null, Validators.required)
         // });
+        if (bug) {
+            this.currentBug = bug;
+        }
         this.bugForm = this.formB.group({
-            title: [null, forms_1.Validators.required],
-            status: [1, forms_1.Validators.required],
-            severity: [1, forms_1.Validators.required],
-            description: [null, forms_1.Validators.required]
+            title: [this.currentBug.title, forms_1.Validators.required],
+            status: [this.currentBug.status, forms_1.Validators.required],
+            severity: [this.currentBug.severity, forms_1.Validators.required],
+            description: [this.currentBug.description, forms_1.Validators.required]
         });
     };
     BugDetailComponent.prototype.submitForm = function () {
@@ -50,6 +53,10 @@ var BugDetailComponent = (function () {
     };
     BugDetailComponent.prototype.freshForm = function () {
         this.bugForm.reset({ status: 1, severity: 1 });
+        this.cleanBug();
+    };
+    BugDetailComponent.prototype.cleanBug = function () {
+        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
     };
     __decorate([
         core_1.Input(), 
