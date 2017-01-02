@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
+import { BugService } from '../service/bug.service';
+
+import { Bug } from '../model/bug';
 
 @Component({
     moduleId: module.id,
@@ -11,8 +15,9 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class BugDetailComponent implements OnInit {
     private modalId = "bugModal";
     private bugForm: FormGroup;
+    @Input() currentBug = new Bug(null, null, null, null, null, null, null, null, null);
 
-    constructor(private formB: FormBuilder) {
+    constructor(private formB: FormBuilder, private bugService: BugService) {
 
     }
 
@@ -36,6 +41,15 @@ export class BugDetailComponent implements OnInit {
     }
 
     submitForm() {
-        console.log(this.bugForm)
+        console.log(this.bugForm);
+        this.addBug();
+    }
+
+    addBug() {
+        this.currentBug.title = this.bugForm.value["title"];
+        this.currentBug.status = this.bugForm.value["status"];
+        this.currentBug.severity = this.bugForm.value["severity"];
+        this.currentBug.description = this.bugForm.value["description"];
+        this.bugService.addBug(this.currentBug);
     }
 }
