@@ -1,4 +1,4 @@
-<div [id]="modalId" class="modal fade">
+<div [id]="modalId" class="modal fade" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form [formGroup]="bugForm">
@@ -18,7 +18,7 @@
                     <div class="form-group col-xs-left" id="severity-form-group">
                         <label for="verity-dropdown" class="sr-only">Severity Dropdown</label>
                         <select id="severity-dropdown" class="form-control" formControlName="severity">
-                            <option *ngFor="let severity of severityArr" [value]="status">{{ severities[severity] }}</option>
+                            <option *ngFor="let severity of severityArr" [value]="severity">{{ severities[severity] }}</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-xl" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-success btn-xl" type="submit" data-dismiss="modal" (click)="submitForm()">Submit</button>
+                    <button class="btn btn-success btn-xl" type="submit" data-dismiss="modal" (click)="submitForm()" [disabled]="bugForm.invalid">Submit</button>
                 </div>
             </form>
         </div>
