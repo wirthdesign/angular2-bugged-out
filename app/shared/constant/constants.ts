@@ -5,3 +5,10 @@ export enum STATUS {
     'Fixed',
     'Declined'
 }
+
+export enum SEVERITY {
+    'Severe',
+    'Low',
+    'Medium',
+    'Cosmetic'
+}
