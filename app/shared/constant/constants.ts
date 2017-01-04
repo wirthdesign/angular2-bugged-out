@@ -1,5 +1,5 @@
 export enum STATUS {
-    'Logged',
+    'Logged' = 1,
     'Recreated',
     'In Progress',
     'Fixed',
@@ -7,7 +7,7 @@ export enum STATUS {
 }
 
 export enum SEVERITY {
-    'Severe',
+    'Severe' = 1,
     'Low',
     'Medium',
     'Cosmetic'
